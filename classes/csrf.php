@@ -28,5 +28,21 @@ class CSRF {
 	{
 		return $token === self::token();
 	}
+	
+	/**
+	 * Returns jquery code to get token
+	 *
+	 * @return bool
+	 */
+	public static function javascript()
+	{
+		$javascript  = '<script>';
+		$javascript .= 'function getToken(){';
+		$javascript .= 'token=null;';
+		$javascript .= '$.getJSON("'.url::site('csrf/generate').'",function(json){token=json.token;});';
+		$javascript .= '}';
+		$javascript .= '</script>';
+		return $token === self::token();
+	}
 
 }
