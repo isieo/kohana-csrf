@@ -1,5 +1,5 @@
 $(function(){
-    function getToken(){
+    function getCSRFToken(){
         var token=null;
         $.ajax({
                         url: "<?=url::site('/csrf/generate');?>",
@@ -16,7 +16,7 @@ $(function(){
 
 
     $('form').submit(function(){
-        theToken = getToken();
+        theToken = getCSRFToken();
         $(this).append('<input type="hidden" name="csrf-token" value="' + theToken + '">');
     });
 });
